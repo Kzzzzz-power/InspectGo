@@ -95,7 +95,7 @@ export function initTaskWorkbench({el,button,api,postJSON,showDialog,toast,onSel
   scenario.addEventListener('change',()=>{prepareRequest=null;prepare.textContent='建立 '+scenario.value+' 教学实例';updateScenarioHint();});
   currentStatus.addEventListener('change',()=>{runRequest=null;status.textContent='查询教学输入已更改；生成新运行后生效，旧判断保持冻结。';});
   function query(){if(selectedRun)return '?'+new URLSearchParams({run_id:selectedRun.run_id});if(!round.value||!at.value)return '';return '?'+new URLSearchParams({inspection_round_id:round.value,as_of:new Date(at.value).toISOString()});}
-  async function loadRounds(){reload.disabled=true;try{rounds=(await allRounds()).items;const prior=round.value;round.replaceChildren(el('option',{value:''},'未选择轮次'),...rounds.map(r=>el('option',{value:r.round_id},`${r.date} · ${r.round_id}${r.scenario_instance_id?' · 教学模拟':''}`)));round.value=rounds.some(r=>r.round_id===prior)?prior:'';if(round.value!==prior)currentStatus.value='';syncCurrentStatus();}catch(e){status.textContent='轮次读取失败：'+e.message+'，可重试。';}finally{reload.disabled=false;}}
+  async function loadRounds(){reload.disabled=true;try{rounds=(await allRounds()).items;const prior=round.value;round.replaceChildren(el('option',{value:''},'未选择轮次'),...rounds.map(r=>el('option',{value:r.round_id},`${r.date} · ${r.round_id}${r.scenario_instance_id?' · 演示场景':''}`)));round.value=rounds.some(r=>r.round_id===prior)?prior:'';if(round.value!==prior)currentStatus.value='';syncCurrentStatus();}catch(e){status.textContent='轮次读取失败：'+e.message+'，可重试。';}finally{reload.disabled=false;}}
   async function prepareS1(){if(prepare.disabled)return;prepare.disabled=true;scenario.disabled=true;prepareRequest??={scenario:scenario.value,payload:{instance_id:'web-'+crypto.randomUUID(),request_id:crypto.randomUUID()}};
     let saved=false;
     try{const data=await postJSON('/api/scenarios/'+prepareRequest.scenario+'/prepare',prepareRequest.payload);saved=true;prepareRequest=null;await loadRounds();
@@ -120,7 +120,7 @@ export function initTaskWorkbench({el,button,api,postJSON,showDialog,toast,onSel
     zoneAccess.value=run.input_snapshot.input_overrides?.zone_access?.find(z=>z.zone_id==='Z3')?.access||'';
     const currentStatusOverride=run.input_snapshot.input_overrides?.current_status_available;
     currentStatus.value=run.scenario_id==='S5'&&typeof currentStatusOverride==='boolean'?String(currentStatusOverride):'';syncCurrentStatus();
-    status.textContent=`已保存 ${run.run_id} · ${run.input_snapshot.round.scenario_instance_id?'教学模拟 · ':''}固定窗口 09:00–09:45（Asia/Shanghai）。当前显示冻结判断。`;
+    status.textContent=`已保存 ${run.run_id} · ${run.input_snapshot.round.scenario_instance_id?'演示场景 · ':''}固定窗口 09:00–09:45（Asia/Shanghai）。当前显示冻结判断。`;
     updateScenarioHint();renderTasks(run,taskList);renderPlanning(run,planningResults,{el,button,proof});renderComparison(baselineRun,run,comparison,{el});onChange?.();}
   function proof(run,id){const p=run.evidence.find(p=>p.evidence_id===id);if(!p){toast('此运行未关联该证据。',true);return;}
     proofBody.replaceChildren(el('code',{},p.evidence_id),el('p',{},`取得状态：${p.status} · 来源：${p.source_type} · ${p.source_id}`),

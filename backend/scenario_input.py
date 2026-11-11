@@ -136,7 +136,7 @@ def prepare_s1(store, payload, scenario_id='S1'):
     manual(store,{'request_id':prefix+'manual-proof','inspection_round_id':response['inspection_round_id'],
         'checkpoint_id':'C03','inspector_id':'P1','observed_at':'2026-10-29T09:09:00+08:00',
         'evidence_type':'field_note','status':'ok','value_json':{'notes':'教学补证入口验证：核对 C03 历史告警及现场记录。'},
-        'review_id':prefix+'S1-REVIEW-C03','notes':'教学模拟补证；不代表真实检查。'},source_type='SIMULATED')
+        'review_id':prefix+'S1-REVIEW-C03','notes':'模拟补证；不代表真实检查。'},source_type='SIMULATED')
     return response
 
 

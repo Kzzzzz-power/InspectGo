@@ -10,7 +10,7 @@
       "mobile_terminal"
     ],
     "required_permissions": [],
-    "estimate_basis": "案例书 2.7 固定教学总耗时，已包含访问协调；不是实测路线耗时。"
+    "estimate_basis": "场景规则中的固定预计总耗时，已包含访问协调；不是实测路线耗时。"
   },
   {
     "plan_id": "PLAN_B",
@@ -28,7 +28,7 @@
         "zone_id": "Z3"
       }
     ],
-    "estimate_basis": "案例书 2.7 固定教学总耗时，已包含访问协调；不是实测路线耗时。"
+    "estimate_basis": "场景规则中的固定预计总耗时，已包含访问协调；不是实测路线耗时。"
   },
   {
     "plan_id": "PLAN_C",
@@ -41,6 +41,6 @@
       "mobile_terminal"
     ],
     "required_permissions": [],
-    "estimate_basis": "案例书 2.7 固定教学总耗时，已包含访问协调；不是实测路线耗时。"
+    "estimate_basis": "场景规则中的固定预计总耗时，已包含访问协调；不是实测路线耗时。"
   }
 ]

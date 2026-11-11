@@ -17,7 +17,7 @@ export function initCampusAlerts({host,onFocus,onInspect}){
   const a=q.current,blocked=suspended||document.hidden||!!document.querySelector('dialog[open]')||document.getElementById('inspection-alert-popup')?.hidden===false;popup.hidden=!a||blocked;
   if(!a){key=null;return;}if(blocked)return;
   heading.textContent=`${a.pointId} · ${a.name} · ${names[a.kind]}`;
-  body.textContent=`${a.condition} / ${a.availability}\n观测：${new Date(a.observedAt).toLocaleString('zh-CN',{hour12:false})}\n来源：${a.sourceType}${a.sourceType==='SIMULATED'?' · 教学模拟':''}\n待查看 ${q.pending} 条`;
+  body.textContent=`${a.condition} / ${a.availability}\n观测：${new Date(a.observedAt).toLocaleString('zh-CN',{hour12:false})}\n来源：${a.sourceType}${a.sourceType==='SIMULATED'?' · 模拟数据':''}\n待查看 ${q.pending} 条`;
   popup.dataset.pointId=a.pointId;popup.dataset.key=a.key;
   if(key!==a.key){key=a.key;previous=document.activeElement;announcement.textContent=heading.textContent;ping();}
  }
@@ -27,7 +27,7 @@ export function initCampusAlerts({host,onFocus,onInspect}){
  on(soundButton,'click',async()=>{sound=!sound;if(sound){try{audio??=new(window.AudioContext||window.webkitAudioContext)();await audio.resume();}catch{sound=false;}}soundButton.textContent=`告警声音：${sound?'开启':'关闭'}`;soundButton.setAttribute('aria-pressed',String(sound));});
  return {sync(snapshot){
       q.sync(snapshot.nodes);const feed=alertFeedStatus(snapshot);host.dataset.alertStream=feed.ready?'ready':'unavailable';
-   const source=snapshot.nodes.some(n=>n.quality==='live'&&n.sourceType==='SIMULATED')?' · 含教学模拟数据':'';
+   const source=snapshot.nodes.some(n=>n.quality==='live'&&n.sourceType==='SIMULATED')?' · 含模拟数据':'';
    const status=feed.label+source;if(connection.textContent!==status)connection.textContent=status;
    summary.textContent=feed.ready?`当前告警 ${q.active.length} · 查看列表`:`${feed.label.split('，')[0].split('；')[0]} · 查看说明`;
    // Preserve keyboard focus across repeating telemetry frames.

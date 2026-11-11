@@ -8,7 +8,7 @@
   "description": "本文件为固定教学输入，不是实时监测、已完成 run 或 T1–T5 判定结果。",
   "assumptions": [
     "固定日期仅供复现；当前指 as_of 时刻。",
-    "C03 后续 NORMAL 与排除当前异常为本夹具选择，案例书也允许确认异常后确认任务成立。",
+    "C03 后续 NORMAL 与排除当前异常为本夹具选择，场景规则也允许确认异常后确认任务成立。",
     "P1 为模拟人员；不附伪造照片；所有现场事实均为教学输入。"
   ],
   "inspection_round": {
@@ -157,7 +157,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C02",
@@ -171,7 +171,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C03",
@@ -185,7 +185,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C04",
@@ -199,7 +199,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C05",
@@ -213,7 +213,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C06",
@@ -227,7 +227,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C07",
@@ -241,7 +241,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     },
     {
       "inspection_id": "S1-INSPECTION-C08",
@@ -255,7 +255,7 @@
       "result": "NORMAL",
       "onsite_confirmed": true,
       "source_type": "SIMULATED",
-      "notes": "教学模拟现场记录；不代表真实校园检查。"
+      "notes": "模拟现场记录；不代表真实校园检查。"
     }
   ],
   "review_requests": [
@@ -265,7 +265,7 @@
       "task_id": "T2",
       "facility_id": "ap-2f",
       "zone_id": "Z1",
-      "reason": "确认 C03 短时网络告警及当前状态（教学模拟）。",
+      "reason": "确认 C03 短时网络告警及当前状态（演示场景）。",
       "status": "completed",
       "created_at": "2026-10-29T09:02:00+08:00",
       "completed_at": "2026-10-29T09:09:01+08:00",

@@ -117,7 +117,7 @@ export function initAnalysisWorkbench({el,button,api,postJSON,showDialog,toast,g
     if(disposed||busy||active())return;
     stop();source=run?.status==='completed'&&run.run_type==='reality'?run:null;request=null;job=null;result=null;rejected=false;retryKind=null;
     failure.value='none';output.replaceChildren();
-    context.textContent=source?`基础运行 ${source.run_id} · 判断截止 ${source.as_of||'未提供'}${teaching()?' · 教学模拟轮次':''}`:'尚未选定基础运行。请先在“轮次与任务”生成或选择已完成的现实运行。';
+    context.textContent=source?`基础运行 ${source.run_id} · 判断截止 ${source.as_of||'未提供'}${teaching()?' · 演示轮次':''}`:'尚未选定基础运行。请先在“轮次与任务”生成或选择已完成的现实运行。';
     say(source?'输入问题后生成独立分析；当前选定运行保持不变。':'请先选择已完成的现实运行，再打开分析面板。');controls();
   }
   function open(run){

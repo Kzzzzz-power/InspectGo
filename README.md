@@ -1,4 +1,4 @@
-# 校园设施巡检与复核 · 校园分布式设施巡检工作台
+# InspectGo · 分布式设施巡检与复核系统
 
 > 用现场证据回答“哪里没巡、异常是否复核”。
 
@@ -35,7 +35,7 @@
 
 在 Windows 的 **PowerShell 7** 中执行，先安装 Git 和可由 `py -3.11 --version` 检查的 Python 3.11。以下命令从 GitHub `main` 获取源码，不依赖本机盘符。
 
-**仓库访问：** [Campus-Inspection](https://github.com/Kzzzzz-power/Campus-Inspection) 已公开，可按下列命令克隆；默认分支为 `main`。
+**仓库访问：** [InspectGo 项目仓库](https://github.com/Kzzzzz-power/Campus-Inspection) 已公开，可按下列命令克隆；默认分支为 `main`。
 
 **获取源码：**
 

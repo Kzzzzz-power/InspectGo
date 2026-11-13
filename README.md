@@ -35,13 +35,13 @@
 
 在 Windows 的 **PowerShell 7** 中执行，先安装 Git 和可由 `py -3.11 --version` 检查的 Python 3.11。以下命令从 GitHub `main` 获取源码，不依赖本机盘符。
 
-**仓库访问：** [InspectGo 项目仓库](https://github.com/Kzzzzz-power/Campus-Inspection) 已公开，可按下列命令克隆；默认分支为 `main`。
+**仓库访问：** [InspectGo 项目仓库](https://github.com/Kzzzzz-power/InspectGo) 已公开，可按下列命令克隆；默认分支为 `main`。
 
 **获取源码：**
 
 ```powershell
-git clone --branch main https://github.com/Kzzzzz-power/Campus-Inspection.git
-cd Campus-Inspection
+git clone --branch main https://github.com/Kzzzzz-power/InspectGo.git
+cd InspectGo
 ```
 
 **首次安装，两条路线共用：**

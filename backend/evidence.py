@@ -64,6 +64,7 @@ def initialize(conn):
         'CREATE INDEX IF NOT EXISTS observation_history ON facility_observations(facility_id,observed_at,observation_id)',
         'CREATE INDEX IF NOT EXISTS inspection_round_history ON inspection_records(inspection_round_id,inspected_at,inspection_id)',
         'CREATE INDEX IF NOT EXISTS evidence_round_history ON evidence(inspection_round_id,observed_at,evidence_id)',
+        'CREATE INDEX IF NOT EXISTS evidence_review_lookup ON evidence(review_id, inspection_round_id) WHERE review_id IS NOT NULL',
         """CREATE INDEX IF NOT EXISTS evidence_original_round_history
             ON evidence(inspection_round_id,observed_at,evidence_id)
             WHERE COALESCE(json_extract(provenance_json,'$.run_id'),'')=''""",

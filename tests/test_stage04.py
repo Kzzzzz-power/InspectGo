@@ -144,3 +144,46 @@ def test_falsy_teaching_overrides_rejected_on_ordinary_round(ctx,override):
     assert response.status_code==422
     with store.transaction() as db:
         assert db.execute("SELECT COUNT(*) FROM evidence WHERE source_type='SIMULATED'").fetchone()[0]==0
+
+
+
+def test_plan_revision_keeps_legacy_run_and_accepts_new_run(ctx, monkeypatch):
+    from backend import planning
+
+    client, store = ctx
+    s3 = prepare(client, 'S3')
+    old_definitions = deepcopy(planning.DEFINITIONS)
+    for plan in old_definitions:
+        plan['estimate_basis'] = 'Legacy estimate basis'
+    with monkeypatch.context() as legacy:
+        legacy.setattr(planning, 'PLAN_VERSION', 'b02-plans-v1')
+        legacy.setattr(planning, 'DEFINITIONS', old_definitions)
+        old = run(client, 'S3', s3, 'legacy-plan')
+
+    current = run(client, 'S3', s3, 'current-plan')
+    assert current['input_snapshot']['plan_version'] != old['input_snapshot']['plan_version']
+    assert current['input_snapshot']['plan_definitions'] == planning.DEFINITIONS
+    assert client.get('/api/runs/' + old['run_id']).json() == old
+    with store.transaction() as db:
+        assert db.execute(
+            'SELECT COUNT(*) FROM plan_definitions WHERE plan_version=?',
+            ('b02-plans-v1',),
+        ).fetchone()[0] == 3
+
+
+def test_review_lookup_index_created_on_restart(ctx):
+    from backend.runs import round_facts
+
+    client, store = ctx
+    s3 = prepare(client, 'S3')
+    with store.transaction(write=True) as db:
+        db.execute('DROP INDEX IF EXISTS evidence_review_lookup')
+
+    store.initialize(seed_demo=False)
+    with store.transaction() as db:
+        assert 'evidence_review_lookup' in {
+            row['name'] for row in db.execute('PRAGMA index_list(evidence)')
+        }
+        db.execute('PRAGMA automatic_index=OFF')
+        _, _, _, reviews = round_facts(db, s3['inspection_round_id'], s3['as_of'])
+        assert any(review['point_id'] == 'C03' for review in reviews)

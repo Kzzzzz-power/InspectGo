@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from .configuration import CONFIG,read_json
 from . import evidence as ev,service
 
-PLAN_VERSION='b02-plans-v1'
+PLAN_VERSION='b02-plans-v2'
 DEFINITIONS=read_json(CONFIG/'plans.json')
 RESOURCES=('P1','P2','access_coordinator','mobile_terminal')
 

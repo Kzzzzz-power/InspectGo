@@ -185,7 +185,7 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File .\Setup-Speech.ps1
 ## 10. 目录结构
 
 ```text
-Campus-Inspection/
+InspectGo/
 ├── backend/                 # API、证据、判断、复核与分析
 ├── frontend/                # Web、Three.js、本地模型与贴图
 ├── config/                  # 设施、任务、方案及 S1—S5

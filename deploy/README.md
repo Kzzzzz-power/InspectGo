@@ -1,6 +1,6 @@
 # Release 自动部署（校园项目专用）
 
-本目录接通私有仓库 Kzzzzz-power/Campus-Inspection-draft 的正式 Release 与现有云端容器。阶段 02 及后续业务开发不在本次范围。
+本目录接通InspectGo 私有部署仓库的正式 Release 与现有云端容器。阶段 02 及后续业务开发不在本次范围。
 
 ## 已有服务器前提
 
